@@ -12,7 +12,9 @@ O presente projeto foi originado no contexto das atividades da disciplina de pó
 
 ## Introdução
 
-> Apresentação de forma resumida do problema (contexto) e a pergunta que se quer responder.
+O Lúpus Eritematoso Sistêmico (SLE) é uma doença autoimune sistêmica caracterizada por múltiplas anormalidades imunológicas e tem potencial para envolver o Sistema Nervoso Central (SNC). A neuroimagem pode ser usada para identificar de forma não invasiva o envolvimento do SNC no LES. Comparada à Tomografia Computadorizada (TC), a Ressonância Magnética (RM) é uma modalidade de imagem mais sensível para detectar anormalidades intracranianas e avaliar a cronicidade e evolução dessas anormalidades, sendo escolhida como exame padrão para compor os conjuntos de dados.
+
+A pergunta que buscamos responder neste projeto foi: qual a etiologia mais provável, entre isquêmicas e desmielinizantes, das lesões presentes nos cerebros dos pacientes com Lúpus Eritematoso Sistêmico? Para responder essa pergunta de pesquisa, usamos um classificador treinado para diferenciar lesões isquêmicas e desmielinizantes, e usamos o classificador treinado para inferir a etiologia das lesões de pacientes com SLE. O resultados, obtido por meio de Visual Transformers (ViT), aponta que a etiologia mais provável das lesões de pacientes com SLE é a isquêmicas.
 
 ### Ferramentas
 
@@ -102,6 +104,6 @@ Como trabalhos futuros, um novo modelo usando [Dino](https://github.com/facebook
 
 ## Referências Bibliográficas
 
-> Lista de artigos, links e referências bibliográficas (se houver).
->
-> Fiquem à vontade para escolher o padrão de referenciamento preferido pelo grupo.
+Yoshiaki Ota, Ashok Srinivasan, Aristides A. Capizzano, Jayapalli R. Bapuraj, John Kim, Ryo Kurokawa, Akira Baba, and Toshio Moritani (2022) Central Nervous System Systemic Lupus Erythematosus: Pathophysiologic, Clinical, and Imaging Features. RadioGraphics. 42:1, 212-232
+
+Roura E, Sarbu N, Oliver A, Valverde S, González-Villà S, Cervera R, Bargalló N and Lladó X (2016) Automated Detection of Lupus White Matter Lesions in MRI. Front. Neuroinform. 10:33. doi: 10.3389/fninf.2016.00033
