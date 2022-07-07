@@ -51,7 +51,7 @@ Para o Conjunto SLE foi realizado o mesmo procedimento após a normalização da
 
 O Conjunto Base foi dividido em dois conjuntos: um de treino e outro de validação. A proporção utilizada foi 80% dos pacientes para o conjunto de treino e 20% dos pacientes para o conjunto de validação. O Conjunto Teste e o Conjunto SLE foram fornecidos separadamente e usados para teste e transferência de conhecimento.
 
-O modelo escolhido para tarefa de classificação foi um Visual Transformer (ViT) com uma implementação mais eficiente de Encoder, o Linformer, e extração de Embeddings usando Extractor. A imagem abaixo ilustra o pipeline utilizado nesse projeto.
+O modelo escolhido para tarefa de classificação foi um Visual Transformer (ViT) com uma implementação mais eficiente de Encoder, o Linformer, e extração de Embeddings usando `Extractor`. A imagem abaixo ilustra o pipeline utilizado nesse projeto.
 
 ![imagem](reports/metodo.drawio.png)
 
@@ -77,19 +77,24 @@ O resultado das predições para o conjunto de teste resultaram na matrix de con
 
 ![imagem](reports/cm_test.svg)
 
-Além disso, coletamos as embeddings da penúltima camada do modelo, fizemos uma redução de dimensionalidade utilizando UMAP, com `n_neighbors=200`, e plotamos os dados em espaços de 2 e 3 dimensões. Perceba que tanto na visualização em 3D quanto 2D os conjuntos estão bem definidos e pode-se separar facilmente os dois conjuntos.
+Além disso, coletamos as embeddings da penúltima camada do modelo, fizemos uma redução de dimensionalidade utilizando [UMAP](https://umap.github.io/umap/), com `n_neighbors=200`, e plotamos os dados em espaços de 2 e 3 dimensões. Perceba que tanto na visualização em 3D quanto 2D os conjuntos estão bem definidos e pode-se separar facilmente os dois conjuntos.
 
 ![umap-2d](reports/umap_2d_test.svg)
 ![umap-3d](reports/umap_3d_test_1.png)
 
 ## Resultados Obtidos e Discussão
 
-> Esta seção deve apresentar o resultado de predição das lesões de LES usando o classificador treinado. Também deve tentar explicar quais os atributos relevantes usados na classificação obtida
->
-> * apresente os resultados de forma quantitativa e qualitativa
-> * tenha em mente que quem irá ler o relatório é uma equipe multidisciplinar. Descreva questões técnicas, mas também a intuição por trás delas.
->
+Na seção anterior, foi apresentado um modelo de atenção que foi capaz de extrair características de maneira eficiente, e que foi capaz de classificar as lesões dos pacientes nas classes AVC, lesões cerebrais isquêmicas, ou EM, correspondente a lesões desmielinizantes. A tarefa proposta nesse projeto foi identificar a etiologia das lesões cerebrais presentes em pacientes de Lúpus Eritematoso Sistêmico (SLE).
+
+O conjunto utilizado para a avaliação da tarefa anterior foi o Conjunto SLE, contendo 697 casos de lesões cerebrais. O modelo desenvolvido anteriormente identificou as lesões SLE como lesões isquêmicas em sua maioria, 662 casos ou cerca de 95% dos casos. Por se tratar de um modelo de atenção, não podemos utilizar técnicas como o Lime para identificar as áreas da imagem mais utilizadas na classificação, uma vez que não são usadas camadas de convolução.
+
+Para avaliar as embeddings geradas, usamos o [UMAP](https://umap.github.io/umap/) para reduzir a dimensionalidade da representação das lesões, e plotamos os dados em um espaço de 2 dimensões. Com base na figura abaixo, podemos observar que não há formação de grupos bem definidos no Conjunto SLE como no Conjunto Teste. O objetivo dessa avaliação é verificar se o modelo gerou representações bem definidas para as lesões.
+
+![umap-2d](reports/umap_2d_sle.svg)
+
 ## Conclusão
+
+Este projeto tinha como objetivo identificar a etiologia das lesões cerebrais presentes em pacientes de Lúpus Eritematoso Sistêmico (SLE), categorizando-as como lesões isquêmicas ou desmielinizantes. Nosso classificador categorizou as lesões SLE como lesões isquêmicas em sua maioria, cerca de 95% dos casos.
 
 > Destacar as principais conclusões obtidas no desenvolvimento do projeto.
 >
