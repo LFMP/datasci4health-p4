@@ -63,12 +63,24 @@ O Linformer possui alguns parâmetros configuráveis que vale a pena destacar, s
 
 de acordo com o artigo do [Linformer](https://arxiv.org/abs/2006.04768), 10 cabeças são o suficiente para qualquer imagem, neste projeto optamos por 8 cabeças, para dim e depth foram utilizados os valores padrões, 512 e 12, respectivamente. Quanto maior o valor para esses parâmetros, maior é o tempo necessário para treinamento e predição do modelo.
 
-Para o modelo ViT também precisamos escolher alguns parâmetros, dentre eles destacamos `image_size` e `path_size`. Para acelerar o treinamento do modelo, fizemos o downsampling na etapa de pré-processamento, o valor escolhido foi 224x224, valor comum de entrada para os ViT. Como estamos trabalhando com imagens pequenas e em um cenário em que queremos prestar atenção em cada pequeno pedaço, definimos um `path_size` de 8 pixels, assim o Transformer conseguirá se ater a pequenos detalhes em cada pedaço da imagem. A quantidade de épocas definidas para treinamento foi de 50, uma vez que modelos de atenção conseguem extrair características de maneira eficiente até mesmo em cenários few-shot learning. Como métrica de avaliação usamos o loss do modelo, para seu cálculo usamos a implementação do Pytorch de [CrossEntropyLoss](https://pytorch.org/docs/stable/nn.html#crossentropyloss), e a acurácia do modelo. Além disso, coletamos as embeddings da penúltima camada do modelo, fizemos uma redução de dimensionalidade utilizando UMAP e plotamos os dados em espaços de 2 e 3 dimensões.
+Para o modelo ViT também precisamos escolher alguns parâmetros, dentre eles destacamos `image_size` e `path_size`. Para acelerar o treinamento do modelo, fizemos o downsampling na etapa de pré-processamento, o valor escolhido foi 224x224, valor comum de entrada para os ViT. Como estamos trabalhando com imagens pequenas e em um cenário em que queremos prestar atenção em cada pequeno pedaço, definimos um `path_size` de 8 pixels, assim o Transformer conseguirá se ater a pequenos detalhes em cada pedaço da imagem.
 
-* resultados do treinamento do classificador usando tabelas e gráficos
->
-> Justificar as escolhas.
-> Esta parte do relatório pode ser copiada da Atividade 11, caso o grupo opte por usar o SVM já treinado.
+A quantidade de épocas definidas para treinamento foi de 50, uma vez que modelos de atenção conseguem extrair características de maneira eficiente até mesmo em cenários few-shot learning. Como métrica de avaliação usamos o loss do modelo, para seu cálculo usamos a implementação do Pytorch de [CrossEntropyLoss](https://pytorch.org/docs/stable/nn.html#crossentropyloss), e a acurácia do modelo, os valores para ambas as métricas está disponível na tabela abaixo.
+
+|                | **Acurácia**  | **Loss**  |
+|:-------------: |:------------: |:--------: |
+|   **Treino**   |      1.0      |  0.0007   |
+| **Validação**  |    0.9750     |  0.0005   |
+|   **Teste**    |      1.0      |    0.0    |
+
+O resultado das predições para o conjunto de teste resultaram na matrix de confusão a seguir. Para sua geração, consideramos como corretas todas as labels geradas no experimento anterior.
+
+![imagem](reports/cm_test.svg)
+
+Além disso, coletamos as embeddings da penúltima camada do modelo, fizemos uma redução de dimensionalidade utilizando UMAP, com `n_neighbors=200`, e plotamos os dados em espaços de 2 e 3 dimensões. Perceba que tanto na visualização em 3D quanto 2D os conjuntos estão bem definidos e pode-se separar facilmente os dois conjuntos.
+
+![umap-2d](reports/umap_2d_test.svg)
+![umap-3d](reports/umap_3d_test_1.png)
 
 ## Resultados Obtidos e Discussão
 
