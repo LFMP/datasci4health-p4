@@ -96,16 +96,10 @@ Para avaliar as embeddings geradas, usamos o [UMAP](https://umap.github.io/umap/
 
 Este projeto tinha como objetivo identificar a etiologia das lesões cerebrais presentes em pacientes de Lúpus Eritematoso Sistêmico (SLE), categorizando-as como lesões isquêmicas ou desmielinizantes. Nosso classificador categorizou as lesões SLE como lesões isquêmicas em sua maioria, cerca de 95% dos casos.
 
-> Destacar as principais conclusões obtidas no desenvolvimento do projeto.
->
-> Destacar os principais desafios enfrentados.
->
-> Principais lições aprendidas.
->
-> Trabalhos Futuros:
->
-> * o que poderia ser melhorado se houvesse mais tempo?
->
+As principais dificuldades enfrentadas no desenvolvimento do projeto foram: a) a escolha dos parâmetros do modelo, b) a falta de padronização nos dados, c) a baixa quantidade de implementações usando ViTs, e d) a falta de ferramentas para a avaliação dos resultados. O desenvolvimento deste projeto ressalta a grande dificuldade de realizar pesquisas em imagens na área da saúde, pois diversas fontes de dados são utilizadas, como imagens de diferentes equipamentos, diferentes padrões de anotações na imagem, etc.
+
+Como trabalhos futuros, um novo modelo usando [Dino](https://github.com/facebookresearch/dino) pode ser utilizado, desta vez incluindo detalhes relacionados a explicabilidade do modelo e segmentando lesões de forma mais precisa, sem a necessidade de interferência humana. Além disso, com um maior prazo seria possível comparar as abordagens supervisionadas, não supervisionadas e semi-supervisionadas, traçando um paralelo em relação aos resutlados obtidos.
+
 ## Referências Bibliográficas
 
 > Lista de artigos, links e referências bibliográficas (se houver).
